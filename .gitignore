@@ -13,6 +13,9 @@ buildNumber.properties
 .mvn/timing.properties
 logs/
 
+### Velocity ###
+velocity.log
+
 
 ### Eclipse ###
 
