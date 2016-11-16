@@ -1,16 +1,25 @@
 package com.primeton.devops.velocity;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.util.Map;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 
+/**
+ * 
+ * VelocityUtil.
+ *
+ * @author zhongwen (mailto:zhongwen@primeton.com)
+ */
 public class VelocityUtil {
+	
+	private static Logger logger = Logger.getLogger(VelocityUtil.class);
 	
 	public static String parse(InputStream template, Map<String, Object> context, String logTag) {
 		if (null == template) {
@@ -34,19 +43,9 @@ public class VelocityUtil {
 			String content = writer.toString();
 			return content;
 		} catch (Throwable t) {
+			logger.error("An error occured while try to parse template.", t);
 		} finally {
-			if (null != writer) {
-				try {
-					writer.close();
-				} catch (IOException e) {
-				}
-			}
-			if (null != reader) {
-				try {
-					reader.close();
-				} catch (IOException e) {
-				}
-			}
+			IOUtils.closeQuietly(writer, reader);
 		}
 		return null;
 	}
@@ -79,13 +78,9 @@ public class VelocityUtil {
 			String content = writer.toString();
 			return content;
 		} catch (Throwable t) {
+			logger.error("An error occured while try to parse template.", t);
 		} finally {
-			if (null != writer) {
-				try {
-					writer.close();
-				} catch (IOException e) {
-				}
-			}
+			IOUtils.closeQuietly(writer);
 		}
 		return template;
 	}
