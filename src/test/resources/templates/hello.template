@@ -1,4 +1,17 @@
 ## This is a single line comment.
+#*
+Thus begins a multi-line comment. Online visitors won't
+see this text because the Velocity Templating Engine will
+ignore it.
+*#
+#**
+  This is a VTL comment block and
+  may be used to store such information
+  as the document author and versioning
+  information:
+    @author John Doe
+    @version 5
+*#
 <html>
 	<head>
 		<title>${title}</title>

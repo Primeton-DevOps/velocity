@@ -1,0 +1,3 @@
+#foreach( $user in $users )
+${user.id}	${user.name}	${user.mail}
+#end
