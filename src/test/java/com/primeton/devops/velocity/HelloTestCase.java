@@ -8,6 +8,12 @@
 
 package com.primeton.devops.velocity;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+import org.junit.Assert;
+
 /**
  * HelloTestCase.
  *
@@ -20,8 +26,18 @@ public class HelloTestCase extends AbstractTestCase {
 	 */
 	@Override
 	public void test() throws Exception {
-		// Auto-generated method stub
+		Map<String, Object> context = new HashMap<String, Object>();
+		context.put("title", "Hello World"); //$NON-NLS-1$ //$NON-NLS-2$
+		context.put("body", UUID.randomUUID().toString().toUpperCase()); //$NON-NLS-1$
+		String template = getTemplateAsString("classpath:/templates/hello.template"); //$NON-NLS-1$
+		System.out.println("\n####### Template Content #######\n");
+		System.out.println(template);
 		
+		String content = VelocityUtil.parse(template, context, "hello.template"); //$NON-NLS-1$
+		System.err.println("\n####### Generate Content #######\n");
+		System.err.println(content);
+		
+		Assert.assertTrue(content.contains("Hello World"));
 	}
 	
 
