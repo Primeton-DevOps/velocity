@@ -1,6 +1,6 @@
-# Apache Velocity Template Engine
+# Velocity
 
-Template engine - Apache Velocity  
+Apache Velocity Template Engine   
   
   
 ## Dependency  
