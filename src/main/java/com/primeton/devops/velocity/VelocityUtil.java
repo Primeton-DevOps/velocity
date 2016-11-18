@@ -131,8 +131,8 @@ public class VelocityUtil {
 	 * @param context
 	 * @return
 	 */
-	public static String mergeTemplate(String templateName, String encoding, Map<String, Object> context) {
-		return mergeTemplate(templateName, encoding, context, null);
+	public static String merge(String templateName, String encoding, Map<String, Object> context) {
+		return merge(templateName, encoding, context, null);
 	}
 	
 	/**
@@ -143,7 +143,7 @@ public class VelocityUtil {
 	 * @param settings
 	 * @return
 	 */
-	public static String mergeTemplate(String templateName, String encoding, Map<String, Object> context, Properties settings) {
+	public static String merge(String templateName, String encoding, Map<String, Object> context, Properties settings) {
 		if (StringUtils.isBlank(templateName)) {
 			return templateName;
 		}
