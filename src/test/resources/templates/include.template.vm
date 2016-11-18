@@ -5,11 +5,14 @@
 ## FileResourceLoader
 ## Absloute Path #parse( "/templates/user.template.vm" )
 ## Relative Path #parse( "templates/user.template.vm" )
+	
 	<access>
 		<enableSsl>true</enableSsl>
 		<autoConnect>false</autoConnect>
 	</access>
+	
 #parse( "/templates/service.template.vm" )
+	
 	<notify>
 		<mails>
 #foreach( $mail in $mails )
