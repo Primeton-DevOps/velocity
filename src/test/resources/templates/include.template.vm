@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+## ClasspathResourceLoader
+#parse( "/templates/user.template.vm" )
+## FileResourceLoader
+## Absloute Path #parse( "/templates/user.template.vm" )
+## Relative Path #parse( "templates/user.template.vm" )
+	<access>
+		<enableSsl>true</enableSsl>
+		<autoConnect>false</autoConnect>
+	</access>
+#parse( "/templates/service.template.vm" )
+	<notify>
+		<mails>
+#foreach( $mail in $mails )
+			<mail>${mail}</mail>
+#end
+		</mails>
+	</notify>
+</config>

@@ -1,0 +1,10 @@
+	<services>
+#foreach( $service in $services )
+		<service>
+			<id>${service.id}</id>
+			<url>${service.url}</url>
+			<user>${service.user}</user>
+			<pass>${service.pass}</pass>
+		</service>
+#end
+	</services>

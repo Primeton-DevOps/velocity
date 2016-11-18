@@ -1,0 +1,16 @@
+<html>
+<head>
+	<title>Foreach</title>
+</head>
+<body>
+<table>
+#foreach( $user in $users )
+	<tr>
+		<td>${user.id}</td>	
+		<td>${user.name}</td>	
+		<td>${user.mail}</td>
+	</tr>
+#end
+</table>
+</body>
+</html>

@@ -98,7 +98,7 @@ public class ForeachTestCase extends AbstractTestCase {
 		}
 		Map<String, Object> context = new HashMap<String, Object>();
 		context.put("users", users); //$NON-NLS-1$ //$NON-NLS-2$
-		String template = getTemplateAsString("classpath:/templates/foreach.template"); //$NON-NLS-1$
+		String template = getTemplateAsString("classpath:/templates/foreach.template.html"); //$NON-NLS-1$
 		System.out.println("\n####### Template Content #######\n");
 		System.out.println(template);
 		

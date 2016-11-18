@@ -1,0 +1,9 @@
+	<users>
+#foreach( $user in $users )
+		<user>
+			<id>${user.id}</id>
+			<name>${user.name}</name>
+			<mail>${user.mail}</mail>
+		</user>
+#end
+	</users>

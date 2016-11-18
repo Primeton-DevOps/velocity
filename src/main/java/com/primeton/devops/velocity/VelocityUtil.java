@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.util.Map;
+import java.util.Properties;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
@@ -21,12 +22,35 @@ public class VelocityUtil {
 	
 	private static Logger logger = Logger.getLogger(VelocityUtil.class);
 	
+	/**
+	 * 
+	 * @param template
+	 * @param context
+	 * @param logTag
+	 * @return
+	 */
 	public static String parse(InputStream template, Map<String, Object> context, String logTag) {
+		return parse(template, context, logTag, null);
+	}
+	
+	/**
+	 * 
+	 * @param template
+	 * @param context
+	 * @param logTag
+	 * @param settings
+	 * @return
+	 */
+	public static String parse(InputStream template, Map<String, Object> context, String logTag, Properties settings) {
 		if (null == template) {
 			return null;
 		}
 		logTag = null == logTag ? "" : logTag;
-		Velocity.init();
+		if (null == settings || settings.isEmpty()) {
+			Velocity.init();
+		} else {
+			Velocity.init(settings);
+		}
 		VelocityContext vcontext = new VelocityContext();
 		if (null != context && !context.isEmpty()) {
 			for (String key : context.keySet()) {
@@ -51,7 +75,6 @@ public class VelocityUtil {
 	}
 	
 	/**
-	 * if parse error return template(source). <br>
 	 * 
 	 * @param template
 	 * @param context
@@ -59,11 +82,27 @@ public class VelocityUtil {
 	 * @return
 	 */
 	public static String parse(String template, Map<String, Object> context, String logTag) {
+		return parse(template, context, logTag, null);
+	}
+	
+	/**
+	 * if parse error return template(source). <br>
+	 * 
+	 * @param template
+	 * @param context
+	 * @param logTag
+	 * @return
+	 */
+	public static String parse(String template, Map<String, Object> context, String logTag, Properties settings) {
 		if (StringUtils.isBlank(template)) {
 			return template;
 		}
 		logTag = null == logTag ? "" : logTag;
-		Velocity.init();
+		if (null == settings || settings.isEmpty()) {
+			Velocity.init();
+		} else {
+			Velocity.init(settings);
+		}
 		VelocityContext vcontext = new VelocityContext();
 		if (null != context && !context.isEmpty()) {
 			for (String key : context.keySet()) {

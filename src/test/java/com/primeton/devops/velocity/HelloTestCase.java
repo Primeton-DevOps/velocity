@@ -29,7 +29,7 @@ public class HelloTestCase extends AbstractTestCase {
 		Map<String, Object> context = new HashMap<String, Object>();
 		context.put("title", "Hello World"); //$NON-NLS-1$ //$NON-NLS-2$
 		context.put("body", UUID.randomUUID().toString().toUpperCase()); //$NON-NLS-1$
-		String template = getTemplateAsString("classpath:/templates/hello.template"); //$NON-NLS-1$
+		String template = getTemplateAsString("classpath:/templates/hello.template.html"); //$NON-NLS-1$
 		System.out.println("\n####### Template Content #######\n");
 		System.out.println(template);
 		
