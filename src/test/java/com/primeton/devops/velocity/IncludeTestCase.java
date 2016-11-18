@@ -148,7 +148,7 @@ public class IncludeTestCase extends AbstractTestCase {
 		System.out.println("\n####### Template Content #######\n");
 		System.out.println(template);
 		
-		// String content = VelocityUtil.mergeTemplate("/templates/include.template.vm", "utf-8", context, getVelocitySettings());
+		// String content = VelocityUtil.merge("/templates/include.template.vm", "utf-8", context, getVelocitySettings());
 		String content = VelocityUtil.parse(template, context, "include.template", getVelocitySettings()); //$NON-NLS-1$
 		System.err.println("\n####### Generate Content #######\n");
 		System.err.println(content);
