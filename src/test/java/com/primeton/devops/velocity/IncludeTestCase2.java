@@ -24,7 +24,7 @@ import com.primeton.devops.velocity.ForeachTestCase.User;
  *
  * @author ZhongWen Li (mailto:lizw@primeton.com)
  */
-public class IncludeTestCase extends AbstractTestCase {
+public class IncludeTestCase2 extends AbstractTestCase {
 	
 	public static class Service {
 		
@@ -148,8 +148,8 @@ public class IncludeTestCase extends AbstractTestCase {
 		System.out.println("\n####### Template Content #######\n");
 		System.out.println(template);
 		
-		// String content = VelocityUtil.mergeTemplate("/templates/include.template.vm", "utf-8", context, getVelocitySettings());
-		String content = VelocityUtil.parse(template, context, "include.template", getVelocitySettings()); //$NON-NLS-1$
+//		String content = VelocityUtil.parse(template, context, "include.template", getVelocitySettings()); //$NON-NLS-1$
+		String content = VelocityUtil.mergeTemplate("/templates/include.template.vm", "utf-8", context, getVelocitySettings());
 		System.err.println("\n####### Generate Content #######\n");
 		System.err.println(content);
 		

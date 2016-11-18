@@ -123,5 +123,55 @@ public class VelocityUtil {
 		}
 		return template;
 	}
+	
+	/**
+	 * 
+	 * @param templateName
+	 * @param encoding
+	 * @param context
+	 * @return
+	 */
+	public static String mergeTemplate(String templateName, String encoding, Map<String, Object> context) {
+		return mergeTemplate(templateName, encoding, context, null);
+	}
+	
+	/**
+	 * 
+	 * @param templateName
+	 * @param encoding
+	 * @param context
+	 * @param settings
+	 * @return
+	 */
+	public static String mergeTemplate(String templateName, String encoding, Map<String, Object> context, Properties settings) {
+		if (StringUtils.isBlank(templateName)) {
+			return templateName;
+		}
+		encoding = StringUtils.isBlank(encoding) ? "utf-8" : encoding; //$NON-NLS-1$
+		if (null == settings || settings.isEmpty()) {
+			Velocity.init();
+		} else {
+			Velocity.init(settings);
+		}
+		VelocityContext vcontext = new VelocityContext();
+		if (null != context && !context.isEmpty()) {
+			for (String key : context.keySet()) {
+				vcontext.put(key, context.get(key));
+			}
+		}
+		StringWriter writer = null;
+		try {
+			writer = new StringWriter();
+			Velocity.mergeTemplate(templateName, encoding, vcontext, writer);
+			writer.flush();
+			String content = writer.toString();
+			return content;
+		} catch (Throwable t) {
+			logger.error("An error occured while try to parse template.", t);
+		} finally {
+			IOUtils.closeQuietly(writer);
+		}
+		return null;
+	}
 
 }
